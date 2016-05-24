@@ -7,6 +7,11 @@ public class Stairs extends BuildingPart {
 
     private List<Coordinates> corners;
 
+    public Stairs(){
+        super();
+        this.corners=new ArrayList<>();
+    }
+
 
     public Stairs(Coordinates start, Coordinates end, List<Coordinates> corners) {
         super(start, end);
@@ -18,6 +23,11 @@ public class Stairs extends BuildingPart {
         super(start, end);
         this.corners = new ArrayList<>();
 
+    }
+
+    @Override
+    public String toString() {
+        return "Stairs: starting point:"+this.getStart().toString()+"; "+"end point:"+this.getEnd().toString();
     }
 
     public List<Coordinates> getCorners() {

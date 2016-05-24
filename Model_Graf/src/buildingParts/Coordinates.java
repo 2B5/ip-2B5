@@ -7,6 +7,11 @@ public class Coordinates {
     private float x;
     private float y;
 
+    public Coordinates(){
+        this.x=0;
+        this.y=0;
+    }
+
     public Coordinates(float x, float y) {
         this.x = x;
         this.y = y;
@@ -50,5 +55,8 @@ public class Coordinates {
 
     public static float getDistance(Coordinates a, Coordinates b) {
         return (float) Math.sqrt((double) ((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)));
+    }
+    public String toString(){
+        return "x="+this.x+","+"y="+this.y;
     }
 }

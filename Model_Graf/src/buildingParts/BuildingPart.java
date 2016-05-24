@@ -8,6 +8,10 @@ public abstract class BuildingPart {
     private Coordinates end;
 
 
+    public BuildingPart(){
+        this.start=new Coordinates();
+        this.end=new Coordinates();
+    }
     public BuildingPart(Coordinates start, Coordinates end) {
         this.start = start;
         this.end = end;
@@ -28,6 +32,9 @@ public abstract class BuildingPart {
     public void setEnd(Coordinates end) {
         this.end = end;
     }
+    public abstract String toString();
+
+
 
 
     public abstract boolean equals(Object o);

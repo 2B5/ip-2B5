@@ -20,12 +20,15 @@ public class Room {
 
     private String level;
 
+    private boolean visited;
+
     public Room(String name, String level) {
         this.name = name;
         this.level = level;
         this.parts = new ArrayList<>();
         this.adjacentRooms = new ArrayList<>();
         this.corners = new ArrayList<>();
+        this.visited=false;
     }
 
     public List<BuildingPart> getParts() {
@@ -96,4 +99,74 @@ public class Room {
         return doors;
     }
 
+    public String toString(){
+        return this.name+" "+this.level;
+    }
+
+    public String roomInfo(){
+        String info=this.toString()+":\nComponents:\n";
+        for (Coordinates c:corners){
+            info=info+"Corner: "+c.toString()+"\n";
+        }
+        for (BuildingPart b:parts){
+            info=info+b.toString()+"\n";
+        }
+        return info;
+
+    }
+    public Room getUnvisitedChildNode(){
+        for (Room r:adjacentRooms){
+            if (!r.isVisited()) return r;
+        }
+        return null;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public float triangleArea(Coordinates a,Coordinates b){
+        float determinant=a.getX()*b.getY()-b.getX()*a.getY();
+        //determinant=Math.abs(determinant);
+        return determinant/2;
+    }
+
+    public BuildingPart nextBuidingPart(BuildingPart b){
+        for (BuildingPart part:parts){
+            if (b.getEnd().equals(part.getStart())  ) return part;
+        }
+        return null;
+    }
+
+    public double area(){
+            double area=0;
+            List <Coordinates> sortedCoordinates=new ArrayList<>();
+            BuildingPart startingPart=parts.get(0);
+            BuildingPart currentPart=startingPart;
+            BuildingPart nextPart=nextBuidingPart(startingPart);
+            boolean check=true;
+            while (check){
+
+
+                for (Coordinates c:corners){
+                    if (currentPart.getStart().equals(c)){
+                        sortedCoordinates.add(c);
+                    }
+                }
+                currentPart=nextPart;
+                nextPart=nextBuidingPart(currentPart);
+
+                if(currentPart==startingPart) check=false;
+            }
+
+        for (int i=0;i<sortedCoordinates.size()-1;i++){
+            area=area+triangleArea(sortedCoordinates.get(i),sortedCoordinates.get(i+1));
+        }
+
+        return Math.abs(area);
+    }
 }

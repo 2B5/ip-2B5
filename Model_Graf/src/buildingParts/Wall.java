@@ -6,11 +6,23 @@ public class Wall extends BuildingPart {
 
   private float width;
 
+    public Wall(){
+        super();
+        this.length=0;
+        this.width=0;
+
+    }
+
     public Wall(Coordinates start,Coordinates end){
         super(start,end);
         this.length=this.getStart().getDistance(this.getEnd());
         this.width=0;
 
+    }
+
+    @Override
+    public String toString() {
+        return "Wall: starting point:"+this.getStart().toString()+"; "+"end point:"+this.getEnd().toString();
     }
 
 
