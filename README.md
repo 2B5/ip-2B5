@@ -1,4 +1,5 @@
 # ip-2B5
+
 [![slack shield mock](https://img.shields.io/badge/slack-available-ff69b4.svg?style=flat)](https://ip-b5.slack.com/messages/)
 
 Acesta este repo-ul grupei 2B5. :fireworks: :rocket: :stars:
@@ -101,3 +102,8 @@ O data ce ati terminat ce ati avut de facut, faceti un pull request catre repo-u
 
 + Lucratul pe branchuri ar fi dus la confuzii mai multe, si la conflicte la push. De asemenea, ar fi aparut probleme, de vreme ce master nu are un control suficient de granular pentru protectia branchului.
 + Fiecare echipa are un repo personal care poate fi sincronizat cu cel principal oricand prin remotes (pull/push) sau poate avea un istoric de mai multe commituri inainte sa faca push pe cel principal (din motive de control al istoricului - git squash - sau ...)
+
+imgmodel = All the files of the model
+imggraph = All the files of the graphists
+imgprocessor = All the files of the image processing
+
